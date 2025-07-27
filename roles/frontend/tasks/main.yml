@@ -1,0 +1,14 @@
+- name: Pull frontend image
+  docker_image:
+    name: "{{ frontend_image }}"
+    source: pull
+
+- name: Start frontend container
+  docker_container:
+    name: backend
+    image: "{{ frontend_image }}"
+    state: started
+    ports:
+      - "3000:3000"
+    networks:
+      - name: yolomy-net

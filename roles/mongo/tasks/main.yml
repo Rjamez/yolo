@@ -1,0 +1,26 @@
+- name: Create Docker network for MongoDB
+  docker_network:
+    name: yolomy-net
+    driver: bridge
+
+- name: Pull MongoDB image
+  docker_image:
+    name: "{{ mongo_image }}"
+    source: pull
+
+- name: Create volume for MongoDB
+  docker_volume:
+    name: mongo-data
+
+- name: Run MongoDB container
+  docker_container:
+    name: mongo
+    image: "{{ mongo_image }}"
+    state: started
+    restart_policy: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - name: yolomy-net
