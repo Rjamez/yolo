@@ -1,90 +1,160 @@
+# 🛠️ Project: Yolomy Micro-service
 
-# Project:Yolomy Micro-service
-- Hey its Robin Adhola here with a new IP that i have been working on recently as part of the Moringa school content as when it comes to Devops Engineering.
+Hey, it's **Robin Adhola** here with a new Independent Project (IP) I've been working on during the past 2 weekends(Two IPs in particular) fully from scrath except from some fundamental code for the project since the existing code and configurations were hectic fto continue them.
 
-- Feel free to clone this project first:'https://github.com/Vinge1718/yolo"(If you want the whole practice experience for yourself).
+## 📦 Project Overview
+
+This project is divided into **two main parts**:
+
+### ✅ Part 1: Docker Containerization
+- Dockerize a full-stack **Node.js e-commerce application**
+- Create custom Docker images for:
+  - Frontend (React)
+  - Backend (Express + MongoDB)
+- Use **Docker Compose** for service orchestration
+- Set up **persistent MongoDB storage** using volumes
+- Push **versioned Docker images** to DockerHub
+
+### ✅ Part 2: Infrastructure as Code with Vagrant & Ansible
+- Use **Vagrant** to provision a local Ubuntu 20.04 virtual machine
+- Automate infrastructure setup with **Ansible**:
+  - Docker & Docker Compose installation
+  - DockerHub image pulling
+  - Service deployment
+- Organize playbooks using **Ansible Roles**:
+  - Frontend
+  - Backend
+  - MongoDB
+
+---
 
 ## 🚀 Getting Started
 
 ### 🔧 Prerequisites
 
-- With Docker & Docker Compose installed
-- Including Git, we should be set for what the project has to offer.
+Make sure the following tools are installed on your local machine:
 
-### 📦 Clone the Project
-- But first, we should:
-```bash
-git clone https://github.com/Rjamez/yolo#
-cd yolo
-```
-
-### 🐳 Run with Docker Compose
-
-You can either **build locally** or **pull images from my DockerHub**.
-
-#### Option A: Build locally
-```bash
-docker-compose up --build
-```
--I think this option is more recommended since the project is already given to you.
-
-#### Option B: Use my prebuilt images from DockerHub(r0bii)
-
-Replace the `build:` keys in `docker-compose.yaml` with:
-
-```yaml
-image: r0bii/yolo_frontend:v1.0.0
-image: r0bii/yolo_backend:v1.0.0
-```
-
-Then run:
-```bash
-docker-compose up
-```
+- [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/)(Also needed in the VM using Vagrant)
+- [Docker Compose](https://docs.docker.com/compose/)(Also needed in the VM using Vagrant)
+- [VirtualBox](https://www.virtualbox.org/)
+- [Vagrant](https://www.vagrantup.com/)
+- [Ansible](https://www.ansible.com/)(Also needed in the VM using Vagrant)
 
 ---
+
+## 📥 Clone the Repository
+
+bash
+git clone https://github.com/Rjamez/yolo
+cd yolo
+
+## 🐳 Running the App with Docker Compose
+
+### Option A: Build Docker Images Locally
+
+bash
+docker-compose up --build
+
+
+### Option B: Use Prebuilt DockerHub Images
+
+Update docker-compose.yml like this:
+
+yaml
+services:
+  frontend:
+    image: r0bii/yolo_frontend:latest
+  backend:
+    image: r0bii/yolo_backend:latest
+
+
+Then run:
+
+bash
+docker-compose up
+
 
 ### 🌐 Access the App
 
-Frontend: http://localhost:3000
-
-Backend API: http://localhost:5000
-
-MongoDB: runs internally at mongo:27017
-
-
-## 🧪 Features
-
--Add and manage products from the frontend dashboard
-![Alt text](/image.png)
-![Alt text](/IMG.png)
-![Alt text](/image2.png)
--Persistent data storage using Docker Volumes
--Real-time interaction between containers via internal Docker networking
--DockerHub image versioning using semver (v1.0.0) or (latest)
-
-
-## ✅ Tasks Covered (Rubric Alignment)
-
--  Containerized backend, frontend, and DB via docker compose build
--  Orchestrated services via Docker Compose
--  Persistent volumes and bridge network
--  Image tagging & push to DockerHub
--  Git workflow with commits and structure:
-
-   "commit 1f3cd99880fd0e78e08fe51ae343d023f95e6623
-   Author: Rjamez
-   Message: created a new yaml file so as to not have complex code...
-
-   commit 4724786e3083aeaa7b769593e4d736ffced86853
-   Author: Rjamez
-   Message: ..."
-
--  Screenshot proof of deployment
-   ![Alt text](/IMG2.png)
-
-
-Email: 'robin.adhola@student.moringaschool.com'  
-Feel free to checkout my GitHub for more work  in the future: [@r0bii](https://github.com/r0bii)
+ Frontend  : http://localhost:3000 
+ Backend   : http://localhost:5000 
+ MongoDB   : Internal on port 27017 
 
 ---
+
+## 🧾 Running the App on VM with Vagrant & Ansible
+
+### 🔁 One-Command Setup:
+
+bash
+vagrant up
+
+
+What happens:
+- A new **Ubuntu 20.04 VM** is created
+- **Ansible** runs automatically:
+  - Installs Docker & Docker Compose
+  - Pulls images from DockerHub
+  - Starts frontend, backend, and MongoDB containers
+  - Then you can retry the frontend and backend links(They should be working)
+
+---
+
+## ✨ Features
+
+- Add/manage products via the frontend dashboard
+- MongoDB data persists with named volumes
+- Microservices architecture with isolated containers
+- Production-ready DockerHub image versions (latest)
+- Fully automated deployment using Vagrant + Ansible
+
+---
+
+## 📸 UI Screenshots
+
+- Yolomy dashboard UI :![Alt Text](image.png)
+- Product dashboard UI :![Alt Text](IMG.png)
+- Products that can be added :![Alt Text](image2.png)
+- Docker Images in Dockerhub :![Alt Text](IMG2.png)
+
+---
+
+## ✅ Rubric Checklist
+
+###  Dockerization (Part 1)
+-  Frontend, Backend, and MongoDB containerized
+-  Orchestration via Docker Compose
+-  Docker images tagged and pushed to DockerHub
+-  MongoDB uses named volumes for persistence
+-  Working UI and screenshots provided
+-  Clean Git history with meaningful commits
+
+###  Configuration Management (Part 2 - Stage 1)
+-  Ubuntu VM provisioned with Vagrant
+-  Infrastructure set up with Ansible
+-  Services managed with Ansible roles
+-  Docker data persists within VM
+
+---
+
+## Example Git Commit Messages
+
+bash
+commit 1f3cd99880fd0e78e08fe51ae343d023f95e6623
+Author: Rjamez
+Message: created a new yaml file so as to not have complex code...
+
+commit 4724786e3083aeaa7b769593e4d736ffced86853
+Author: Rjamez
+Message: added roles for mongo and backend playbook
+
+
+---
+
+##  Contact Me
+
+- 📧 Email: [robin.adhola@student.moringaschool.com](mailto:robin.adhola@student.moringaschool.com)
+- 🌐 GitHub: [@r0bii](https://github.com/r0bii)
+
+ Feel free to fork or clone the repo and try the full DevOps deployment experience! 🎉
